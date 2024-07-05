@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy July 4th!</title>
+
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            background: black;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="fireworksCanvas"></canvas>
+    <script>
+
+        const canvas = document.getElementById('fireworksCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const clicks = [];
+
+        canvas.addEventListener('click', (event) => {
+            const x = event.clientX;
+            const y = event.clientY;
+            clicks.push({x,y})
+        });
+
+     
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            //ctx.fillStyle ='green';
+            //ctx.fillRect(0,0, canvas.width, canvas.height);
+           clicks.forEach((click, index)=> {
+ctx.font = '25px Arial';            
+ctx.fillStyle = 'white';
+ctx.fillText('i:' + index, click.x,click.y);
+
+           });
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+
+</html>
